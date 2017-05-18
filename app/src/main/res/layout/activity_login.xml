@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.management.LoginActivity">
+    android:orientation="vertical"
+    tools:context="com.example.management.LoginActivity"
+    android:weightSum="1">
 
     <EditText
         android:id="@+id/idText"
@@ -14,7 +16,8 @@
         android:hint="아이디"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginTop="28dp" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -32,14 +35,15 @@
         android:layout_height="47dp"
         android:text="로그인"
         tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="113dp" />
+        tools:layout_editor_absoluteY="113dp"
+        android:layout_marginTop="12dp" />
 
     <TextView
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="176dp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="회원가입" />
+</LinearLayout>
