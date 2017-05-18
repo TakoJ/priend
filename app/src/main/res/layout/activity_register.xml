@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context="com.example.management.RegisterActivity">
 
     <EditText
         android:id="@+id/idText"
-        android:layout_width="370dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
         android:hint="아이디"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="8dp" />
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="370dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="130dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/passwordText"
-        android:layout_width="371dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/idText"
         android:ems="10"
         android:hint="비밀번호"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/passwordText"
+        android:ems="10"
+        android:hint="이름"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="68dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/ageText"
-        android:layout_width="370dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nameText"
         android:ems="10"
         android:hint="나이"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="184dp" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="363dp"
-        android:layout_height="55dp"
-        android:text="회원가입"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="246dp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ageText"
+        android:text="회원가입" />
+</RelativeLayout>
