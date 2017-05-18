@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.management.RegisterActivity">
+
+    <EditText
+        android:id="@+id/idText"
+        android:layout_width="370dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="아이디"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="371dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <EditText
+        android:id="@+id/ageText"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="나이"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="184dp" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="363dp"
+        android:layout_height="55dp"
+        android:text="회원가입"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="246dp" />
+</android.support.constraint.ConstraintLayout>
