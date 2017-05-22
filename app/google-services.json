@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "806488901090",
+    "firebase_url": "https://management-445df.firebaseio.com",
+    "project_id": "management-445df",
+    "storage_bucket": "management-445df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806488901090:android:621c59fc401d7f41",
+        "android_client_info": {
+          "package_name": "com.example.management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806488901090-uqle0dcmktv0dqopj54jrq0nh6dlv7l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAueaYwVCgcH8ldg_qDD4wD4vy-27nZZM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

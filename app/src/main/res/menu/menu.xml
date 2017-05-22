@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android2="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res-auto/android">
+
+    <item
+        android2:icon="@drawable/home"
+        android2:title="action_home"
+        android2:id="@+id/homeButton"
+        app:showAsAction="ifRoom" />
+</menu>
