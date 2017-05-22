@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 if(v == buttonProfile){
                     if(firebaseAuth.getCurrentUser() == null){
                         //로그인이 안되어있을 시 toast띄우기
-                        finish();
                         Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_LONG).show();
                     } else {
                         //로그인상태에만 프로일로 이동
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         //로그인시에는 toast띄우기
-                        finish();
                         Toast.makeText(getApplicationContext(), "회원가입시 로그아웃 상태여야 합니다.", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -77,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         //로그인상태시 toast띄우기
-                        finish();
                         Toast.makeText(getApplicationContext(), "로그인 상태입니다.", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -90,11 +87,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(v == buttonLogout){
                     if(firebaseAuth.getCurrentUser() == null){
-                        finish();
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     } else {
                         firebaseAuth.signOut();
-                        finish();
                         Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 }

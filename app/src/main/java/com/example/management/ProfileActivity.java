@@ -46,7 +46,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         if(v == buttonLogout){
             firebaseAuth.signOut();
-            finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
 //        if(v.getId() == R.id.btn_profilefinish){

@@ -44,7 +44,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="비밀번호는 8~20자의 영문,숫자 조합으로만 가능합니다."
+            android:text="비밀번호는 6~20자의 영문,숫자 조합으로만 가능합니다."
             android:layout_gravity="center_horizontal"/>
 
         <Button
