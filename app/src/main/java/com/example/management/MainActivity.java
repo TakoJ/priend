@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
             //로그인버튼 눌렀을 때
             @Override
             public void onClick(View v) {
-                if(v == buttonRegister){
+                if(v == buttonLogin){
                     if(firebaseAuth.getCurrentUser() == null){
-                        // 로그인이 안되어있을 때만 로그인창으로 이동
+                        // 로그인이 안되어있을 때, 로그인창으로 이동
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                     } else {

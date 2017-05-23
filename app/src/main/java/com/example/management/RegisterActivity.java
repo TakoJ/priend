@@ -60,10 +60,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
     private boolean isValidPassword(String target){
         //영어,숫자조합 6~20자 비밀번호
-        Pattern p = Pattern.compile("(^[a-zA-Z0-9]{6,20}$)");
+        Pattern p = Pattern.compile( "^[a-zA-Z0-9]{6,20}$");
 
         Matcher m = p.matcher(target);
-        if(m.find()){
+        if(m.matches()){
             return true;
         }else{
             return false;
