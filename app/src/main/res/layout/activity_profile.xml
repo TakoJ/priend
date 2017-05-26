@@ -45,7 +45,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/petImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="44dp"
@@ -63,8 +63,8 @@
             android:layout_marginTop="20dp"
             android:text="반려동물 사진"
             android:layout_below="@+id/linearLayout2"
-            android:layout_alignLeft="@+id/imageView"
-            android:layout_alignStart="@+id/imageView" />
+            android:layout_alignLeft="@+id/petImage"
+            android:layout_alignStart="@+id/petImage" />
 
         <Button
             android:id="@+id/btn_UploadPicture"
@@ -72,9 +72,9 @@
             android:layout_height="40dp"
             android:text="사진선택"
             android:textAppearance="@style/TextAppearance.AppCompat"
-            android:layout_below="@+id/imageView"
-            android:layout_alignLeft="@+id/imageView"
-            android:layout_alignStart="@+id/imageView" />
+            android:layout_below="@+id/petImage"
+            android:layout_alignLeft="@+id/petImage"
+            android:layout_alignStart="@+id/petImage" />
 
         <EditText
             android:id="@+id/petName"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/radioGroup3"
+            android:id="@+id/radiogroup_gender"
             android:layout_below="@+id/textViewUserEmail"
             android:layout_alignLeft="@+id/petName"
             android:layout_alignStart="@+id/petName">
@@ -117,14 +117,14 @@
             android:ems="10"
             android:hint="반려동물 나이"
             android:inputType="textPersonName"
-            android:layout_above="@+id/radioGroup4"
+            android:layout_above="@+id/radiogroup_size"
             android:layout_alignLeft="@+id/petName"
             android:layout_alignStart="@+id/petName" />
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/radioGroup"
+            android:id="@+id/radiogroup_type"
             android:layout_below="@+id/btn_UploadPicture"
             android:layout_alignLeft="@+id/btn_UploadPicture"
             android:layout_alignStart="@+id/btn_UploadPicture">
@@ -143,14 +143,14 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/editButton"
             android:layout_width="75dp"
             android:layout_height="38dp"
             android:text="수정"
             android:layout_alignBaseline="@+id/pet_image"
             android:layout_alignBottom="@+id/pet_image"
-            android:layout_toRightOf="@+id/imageView"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/petImage"
+            android:layout_toEndOf="@+id/petImage"
             android:layout_marginLeft="76dp"
             android:layout_marginStart="76dp" />
 
@@ -158,19 +158,19 @@
             android:id="@+id/btn_profilefinish"
             android:layout_width="75dp"
             android:layout_height="38dp"
-            android:layout_alignBaseline="@+id/pet_image"
-            android:layout_alignBottom="@+id/pet_image"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="17dp"
-            android:layout_marginRight="17dp"
+            android:layout_alignBaseline="@+id/editButton"
+            android:layout_alignBottom="@+id/editButton"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/editButton"
+            android:layout_toRightOf="@+id/editButton"
             android:text="완료" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/radioGroup4"
+            android:id="@+id/radiogroup_size"
             android:layout_below="@+id/btn_UploadPicture"
             android:layout_alignLeft="@+id/petAge"
             android:layout_alignStart="@+id/petAge"
@@ -201,11 +201,11 @@
             android:layout_height="80dp"
             android:layout_marginTop="25dp"
             android:text="양육팁(size기반)"
-            android:layout_below="@+id/radioGroup"
-            android:layout_alignLeft="@+id/radioGroup"
-            android:layout_alignStart="@+id/radioGroup"
-            android:layout_alignRight="@+id/radioGroup4"
-            android:layout_alignEnd="@+id/radioGroup4" />
+            android:layout_below="@+id/radiogroup_type"
+            android:layout_alignLeft="@+id/radiogroup_type"
+            android:layout_alignStart="@+id/radiogroup_type"
+            android:layout_alignRight="@+id/radiogroup_size"
+            android:layout_alignEnd="@+id/radiogroup_size" />
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -221,9 +221,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_below="@+id/button8"
-            android:layout_alignLeft="@+id/radioGroup3"
-            android:layout_alignStart="@+id/radioGroup3"  />
+            android:layout_below="@+id/editButton"
+            android:layout_alignLeft="@+id/radiogroup_gender"
+            android:layout_alignStart="@+id/radiogroup_gender"  />
     </RelativeLayout>
 </ScrollView>
 
