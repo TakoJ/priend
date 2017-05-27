@@ -79,21 +79,21 @@
         <EditText
             android:id="@+id/petName"
             android:layout_width="200dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/petAge"
+            android:layout_alignEnd="@+id/btn_profilefinish"
+            android:layout_alignRight="@+id/btn_profilefinish"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
             android:ems="10"
             android:hint="반려동물 이름"
-            android:inputType="textPersonName"
-            android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_above="@+id/petAge"
-            android:layout_alignRight="@+id/btn_profilefinish"
-            android:layout_alignEnd="@+id/btn_profilefinish" />
+            android:inputType="textPersonName" />
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/radiogroup_gender"
-            android:layout_below="@+id/textViewUserEmail"
+            android:layout_above="@+id/petName"
             android:layout_alignLeft="@+id/petName"
             android:layout_alignStart="@+id/petName">
 
@@ -143,28 +143,15 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/editButton"
-            android:layout_width="75dp"
-            android:layout_height="38dp"
-            android:text="수정"
-            android:layout_alignBaseline="@+id/pet_image"
-            android:layout_alignBottom="@+id/pet_image"
-            android:layout_toRightOf="@+id/petImage"
-            android:layout_toEndOf="@+id/petImage"
-            android:layout_marginLeft="76dp"
-            android:layout_marginStart="76dp" />
-
-        <Button
             android:id="@+id/btn_profilefinish"
             android:layout_width="75dp"
             android:layout_height="38dp"
-            android:layout_alignBaseline="@+id/editButton"
-            android:layout_alignBottom="@+id/editButton"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_toEndOf="@+id/editButton"
-            android:layout_toRightOf="@+id/editButton"
-            android:text="완료" />
+            android:text="완료"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -221,9 +208,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_below="@+id/editButton"
-            android:layout_alignLeft="@+id/radiogroup_gender"
-            android:layout_alignStart="@+id/radiogroup_gender"  />
+            android:layout_above="@+id/radiogroup_gender"
+            android:layout_alignLeft="@+id/calendarView"
+            android:layout_alignStart="@+id/calendarView" />
     </RelativeLayout>
 </ScrollView>
 

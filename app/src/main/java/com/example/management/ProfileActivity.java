@@ -1,10 +1,23 @@
 package com.example.management;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,16 +29,38 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Hashtable;
+
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
+    private StorageReference mStorageRef;
+    Bitmap bitmap;
 
-    private TextView textViewUserEamil;
-    private Button buttonLogout, buttonRegister;
-    private ImageView petImage;
+    private static final int PICK_FROM_ALBUM = 1;
+
+
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
+    ImageView petImage;
     private Button btn_UploadPicture;
     private EditText petName, petAge;
     private RadioButton radioGender_male, radioGender_female, radio_dog, radio_cat;
@@ -34,25 +69,69 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private RadioGroup radiogroup_gender, radiogroup_type, radiogroup_size;
 
 
+    String userEmail;
+    String userUid;
+    String TAG = getClass().getSimpleName();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
+        userUid = sharedPreferences.getString("uid",user.getUid()); //유저 uid받기
+        userEmail = sharedPreferences.getString("email",user.getEmail()); //유저 email(아이디)받기
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
 
         if(firebaseAuth.getCurrentUser() == null){
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        textViewUserEamil = (TextView) findViewById(R.id.textViewUserEmail);
-        textViewUserEamil.setText( user.getEmail()+"님의 반려동물");
+        // 이 activity가 켜졌을 때 권한설정 물어보기
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                        1);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+
+
+
+        // butterknife: view binder , list adapter 할때도 간편한 코드 구현가능
+        petImage = (ImageView) findViewById(R.id.petImage);
+        btn_UploadPicture = (Button) findViewById(R.id.btn_UploadPicture);
+        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
+        textViewUserEmail.setText( user.getEmail()+"님의 반려동물");
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(this);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
         petImage = (ImageView) findViewById(R.id.petImage);
         btn_UploadPicture = (Button) findViewById(R.id.btn_UploadPicture);
         petName = (EditText) findViewById(R.id.petName);
@@ -70,10 +149,128 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         btn_profilefinish = (Button) findViewById(R.id.btn_profilefinish);
 
+        btn_UploadPicture.setOnClickListener(this);
         btn_profilefinish.setOnClickListener(this);
+
         loadSavedPreferences();
+
+
+        //Upload할때 uid키로 업로드했기 때문에 받아올때도 uid사용
+        myRef.child("users").child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue().toString();
+                String petPhoto = dataSnapshot.child("photo").getValue().toString(); //DB에서 사진 가져오기
+
+                if(TextUtils.isEmpty(petPhoto)){
+
+                }else{
+                    Picasso.with(getApplicationContext()).load(petPhoto).fit().centerInside().into(petImage, new Callback.EmptyCallback() {
+                        @Override public void onSuccess() {
+                            // Index 0 is the image view.
+                            Log.d(TAG,"SUCCESS");
+                        }
+                    });
+                }
+
+                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
     }
 
+
+    /**
+     * 앨범에서 이미지 가져오기
+     */
+    public void doTakeAlbumAction()
+    {
+        // 앨범호출
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
+        intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_FROM_ALBUM);
+    }
+
+    //프로필이미지 파이어베이스에 업로드하기
+    public void uploadimage(){
+        StorageReference mountainsRef = mStorageRef.child("users").child(userEmail+"jpg");
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @SuppressWarnings("VisibleForTests")
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl(); //오류 suppress함
+                String photoUrl = String.valueOf(downloadUrl);
+                Log.d("url", photoUrl);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users");
+
+                Hashtable<String, String> profile = new Hashtable<String, String>();
+                profile.put("email", userEmail);
+                profile.put("photo", photoUrl);
+
+                myRef.child(userUid).setValue(profile);
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String s = dataSnapshot.getValue().toString();
+                        Log.d("Profile", s);
+                        if(dataSnapshot != null){
+                            Toast.makeText(getApplicationContext(), "사진 업로드가 잘 됐습니다.", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+    }  //파이어베이스에 파일업로드 end
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+
+        if(resultCode != RESULT_OK)
+            Toast.makeText(getApplicationContext(), "onActivityResult:RESULT_NOT_OK", Toast.LENGTH_SHORT).show();
+
+        switch(requestCode){
+            case PICK_FROM_ALBUM: {
+                    Uri image = data.getData();
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image);
+                        petImage.setImageBitmap(bitmap);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
+    }
     public void loadSavedPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String pName = sharedPreferences.getString("storedpetname", "yourpetname");
@@ -169,20 +366,30 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             savedSizePreferences("storedpetsize", radioSize_small.isChecked());
             savedSizePreferences("storedpetsize", radioSize_middle.isChecked());
             savedSizePreferences("storedpetsize", radioSize_large.isChecked());
-
+            uploadimage();
         }
+        if(v==btn_UploadPicture){
 
+            //사진선택 눌렀을 때
+            DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    doTakeAlbumAction();
+                }
+            };
+            DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            };
 
-
-//        savedPreferences("storedpetage", petAge.getText().toString());
-//        if(v.getId() == R.id.btn_profilefinish){
-//            //SharedPreference 환경 변수 사용
-//            SharedPreferences prefs = getSharedPreferences("login", 0);
-//            //prefs.getString() return값이 null이라면 2번째 함수를 대입한다.
-////            String  pet_name = prefs.getString("petss","");
-//
-//
-//        }
+            new AlertDialog.Builder(this)
+                    .setTitle("업로드할 이미지 선택")
+                    .setNeutralButton("앨범선택", albumListener)
+                    .setNegativeButton("취소", cancelListener)
+                    .show();
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -200,6 +407,32 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 return super.onOptionsItemSelected(item);
 
+        }
+    }
+
+    //permission 설정
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
         }
     }
 
