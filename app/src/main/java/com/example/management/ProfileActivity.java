@@ -156,9 +156,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         loadSavedPreferences();
 
  //원래 사진받아오는 자리
-        if( FirebaseDatabase.getInstance().getReference().child("users").child(userUid) != null){
             new DownloadImage().execute();
-        }
+
 
 
     }
@@ -445,6 +444,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                         Log.d(TAG, "Value is: " + value);
                     }catch (NullPointerException e){
+                        //사진이 아직없으면 null값 가르키므로 예외처리해주기
                         Toast.makeText(getApplicationContext(),"사진은 아직 없습니다", Toast.LENGTH_SHORT).show();
                     }catch(Exception e){
                         Toast.makeText(getApplicationContext(),"예외처리", Toast.LENGTH_SHORT).show();
