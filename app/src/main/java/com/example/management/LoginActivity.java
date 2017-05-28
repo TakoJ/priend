@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         progressDialog.dismiss();
 
                         if(task.isSuccessful()){
-                            //start the profile activity
+                            //start the main activity
                             finish();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else{

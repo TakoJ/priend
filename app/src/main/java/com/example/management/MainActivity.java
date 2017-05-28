@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
+
     private Button buttonProfile;
     private Button buttonRegister;
     private Button buttonLogin;
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
-
 
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             //프로필버튼 눌렸을 때

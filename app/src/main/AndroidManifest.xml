@@ -6,6 +6,10 @@
     <!-- 아래 두개는 위치정보 활용 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 아래 두개는 앨범에서 이미지 가져오기때 활용 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2" />
 
     <application
         android:allowBackup="true"
