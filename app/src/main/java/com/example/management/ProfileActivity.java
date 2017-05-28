@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -154,36 +155,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         loadSavedPreferences();
 
+ //원래 사진받아오는 자리
+        if( FirebaseDatabase.getInstance().getReference().child("users").child(userUid) != null){
+            new DownloadImage().execute();
+        }
 
-        //Upload할때 uid키로 업로드했기 때문에 받아올때도 uid사용
-        myRef.child("users").child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue().toString();
-                String petPhoto = dataSnapshot.child("photo").getValue().toString(); //DB에서 사진 가져오기
-
-                if(TextUtils.isEmpty(petPhoto)){
-
-                }else{
-                    Picasso.with(getApplicationContext()).load(petPhoto).fit().centerInside().into(petImage, new Callback.EmptyCallback() {
-                        @Override public void onSuccess() {
-                            // Index 0 is the image view.
-                            Log.d(TAG,"SUCCESS");
-                        }
-                    });
-                }
-
-                Log.d(TAG, "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
 
     }
 
@@ -194,61 +170,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void doTakeAlbumAction()
     {
         // 앨범호출
-        Intent intent = new Intent(Intent.ACTION_PICK);
+       Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
         intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_FROM_ALBUM);
     }
 
     //프로필이미지 파이어베이스에 업로드하기
-    public void uploadimage(){
-        StorageReference mountainsRef = mStorageRef.child("users").child(userEmail+"jpg");
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = mountainsRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @SuppressWarnings("VisibleForTests")
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Uri downloadUrl = taskSnapshot.getDownloadUrl(); //오류 suppress함
-                String photoUrl = String.valueOf(downloadUrl);
-                Log.d("url", photoUrl);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("users");
-
-                Hashtable<String, String> profile = new Hashtable<String, String>();
-                profile.put("email", userEmail);
-                profile.put("photo", photoUrl);
-
-                myRef.child(userUid).setValue(profile);
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String s = dataSnapshot.getValue().toString();
-                        Log.d("Profile", s);
-                        if(dataSnapshot != null){
-                            Toast.makeText(getApplicationContext(), "사진 업로드가 잘 됐습니다.", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-            }
-        });
-    }  //파이어베이스에 파일업로드 end
+  //파이어베이스에 파일업로드 end
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -366,7 +295,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             savedSizePreferences("storedpetsize", radioSize_small.isChecked());
             savedSizePreferences("storedpetsize", radioSize_middle.isChecked());
             savedSizePreferences("storedpetsize", radioSize_large.isChecked());
-            uploadimage();
+            new UploadImage().execute();
         }
         if(v==btn_UploadPicture){
 
@@ -436,5 +365,104 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    private class UploadImage extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... params) {
+                StorageReference mountainsRef = mStorageRef.child("users").child(userEmail+"jpg");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                UploadTask uploadTask = mountainsRef.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @SuppressWarnings("VisibleForTests")
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                        Uri downloadUrl = taskSnapshot.getDownloadUrl(); //오류 suppress함
+                        String photoUrl = String.valueOf(downloadUrl);
+                        Log.d("url", photoUrl);
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("users");
+
+                        Hashtable<String, String> profile = new Hashtable<String, String>();
+                        profile.put("email", userEmail);
+                        profile.put("photo", photoUrl);
+
+                        myRef.child(userUid).setValue(profile);
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                String s = dataSnapshot.getValue().toString();
+                                Log.d("Profile", s);
+                                if(dataSnapshot != null){
+                                    Toast.makeText(getApplicationContext(), "사진 업로드가 잘 됐습니다.", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+                });
+            return null;
+        }
+    }
+    private class DownloadImage extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            //Upload할때 uid키로 업로드했기 때문에 받아올때도 uid사용
+            FirebaseDatabase.getInstance().getReference().child("users").child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    try{
+                        String value = dataSnapshot.getValue().toString();
+                        String petPhoto = dataSnapshot.child("photo").getValue().toString(); //DB에서 사진 가져오기
+
+                        if(TextUtils.isEmpty(petPhoto)){
+
+                        }else{
+                            Picasso.with(getApplicationContext()).load(petPhoto).fit().centerInside().into(petImage, new Callback.EmptyCallback() {
+                                @Override public void onSuccess() {
+                                    // Index 0 is the image view.
+                                    Log.d(TAG,"SUCCESS");
+                                }
+                            });
+                        }
+
+                        Log.d(TAG, "Value is: " + value);
+                    }catch (NullPointerException e){
+                        Toast.makeText(getApplicationContext(),"사진은 아직 없습니다", Toast.LENGTH_SHORT).show();
+                    }catch(Exception e){
+                        Toast.makeText(getApplicationContext(),"예외처리", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    }
+
+
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+            return null;
+        }
+    }
 
 }
