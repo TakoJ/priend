@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/swelling"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,15 +61,15 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/infection"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button4"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignStart="@+id/button4"
-        android:layout_below="@+id/button2"
+        android:layout_alignEnd="@+id/shiver"
+        android:layout_alignLeft="@+id/shiver"
+        android:layout_alignRight="@+id/shiver"
+        android:layout_alignStart="@+id/shiver"
+        android:layout_below="@+id/swelling"
         android:layout_marginTop="46dp"
         android:background="@android:color/holo_red_light"
         android:text="병원찾기"
@@ -77,15 +77,15 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/shiver"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_below="@+id/button3"
+        android:layout_alignEnd="@+id/swelling"
+        android:layout_alignLeft="@+id/swelling"
+        android:layout_alignRight="@+id/swelling"
+        android:layout_alignStart="@+id/swelling"
+        android:layout_below="@+id/infection"
         android:layout_marginTop="36dp"
         android:background="@android:color/holo_red_light"
         android:text="게시판"
