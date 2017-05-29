@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     tools:context="psa.priend_diseasecondition.disease_searchActivity">
 
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+    <ImageButton
+        android:id="@+id/search_button"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+        tools:layout_editor_absoluteX="321dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <EditText
+        android:id="@+id/search_line"
+        android:layout_width="313dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="-8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintRight_toLeftOf="@+id/search_button"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>

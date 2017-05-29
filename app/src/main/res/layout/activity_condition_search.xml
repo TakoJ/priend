@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="45dp"
     android:orientation="vertical">
 
     <TableLayout
@@ -14,17 +15,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="17dp">
+
             <RadioButton
                 android:id="@+id/dog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="강아지" />
+                android:text="강아지"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -34,7 +55,9 @@
                 android:id="@+id/cat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="고양이" />
+                android:text="고양이"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 
             <TableRow
                 android:layout_width="match_parent"
@@ -53,171 +76,186 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="17dp">
+
+
+            <Button
+                android:id="@+id/vomit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?android:attr/textColorHighlight"
+                android:text="구토"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/torpor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?android:attr/textColorHighlight"
+                android:text="무기력"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+            <Button
+                android:id="@+id/hairloss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?android:attr/textColorHighlight"
+                android:text="탈모" />
+
+            <Button
+                android:id="@+id/stomachache"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="?android:attr/textColorHighlight"
+                android:text="복통" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="17dp">
 
             <Button
-                android:id="@+id/button27"
+                android:id="@+id/nausea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="구역질" />
 
             <Button
-                android:id="@+id/button26"
+                android:id="@+id/polypnea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="다호흡" />
 
             <Button
-                android:id="@+id/button25"
+                android:id="@+id/constipation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="변비" />
 
             <Button
-                android:id="@+id/button24"
+                android:id="@+id/inappetence"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="식욕부진" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="17dp">
 
             <Button
-                android:id="@+id/button28"
+                android:id="@+id/lump"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="종괴" />
 
             <Button
-                android:id="@+id/button526"
+                android:id="@+id/cough"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="기침" />
 
             <Button
-                android:id="@+id/button525"
+                android:id="@+id/fever"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="발열" />
 
             <Button
-                android:id="@+id/button924"
+                android:id="@+id/nosebleed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="코피" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="17dp">
 
             <Button
-                android:id="@+id/button527"
+                android:id="@+id/diarrhea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="설사" />
 
             <Button
-                android:id="@+id/button726"
+                android:id="@+id/redpee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="적색뇨" />
 
             <Button
-                android:id="@+id/button5245"
-                android:layout_width="wrap_content"
+                android:id="@+id/death"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="급사" />
 
             <Button
-                android:id="@+id/button424"
+                android:id="@+id/dyspnea"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="호흡곤란" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="17dp">
 
             <Button
-                android:id="@+id/button22"
+                android:id="@+id/shiver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="떨림" />
 
             <Button
-                android:id="@+id/button21"
+                android:id="@+id/infection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="염증" />
 
             <Button
-                android:id="@+id/button20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button19"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/button4"
+                android:id="@+id/swelling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="부종" />
 
             <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button1"
+                android:id="@+id/pain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:text="Button" />
+                android:text="통증" />
         </TableRow>
 
     </TableLayout>
