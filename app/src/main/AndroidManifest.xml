@@ -27,6 +27,7 @@
         </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".VetActivity"></activity>
     </application>
 
 </manifest>

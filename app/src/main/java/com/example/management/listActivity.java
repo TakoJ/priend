@@ -12,11 +12,12 @@ import android.widget.TextView;
  * Created by Chaewon on 2017-05-18.
  */
 
-public class listAdapter extends ArrayAdapter<String> {
-    listAdapter(Context context, String[] items) {
-        super(context, R.layout.activity_list_layout, items);
-    }
+public class listActivity extends ArrayAdapter<String> {
+        listActivity(Context context, String[]items){
+            super(context, R.layout.activity_list_layout, items);
+        }
 
+///////////////////////vetActivity로 이동///////////////////////
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
