@@ -12,8 +12,8 @@ import android.widget.TextView;
  * Created by Chaewon on 2017-05-18.
  */
 
-public class listActivity extends ArrayAdapter<String> {
-        listActivity(Context context, String[]items){
+public class VetlistInflater extends ArrayAdapter<String> {
+        VetlistInflater(Context context, String[]items){
             super(context, R.layout.activity_list_layout, items);
         }
 

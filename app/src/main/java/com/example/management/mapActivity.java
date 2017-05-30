@@ -1,38 +1,35 @@
 package com.example.management;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
-import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapController;
-import com.nhn.android.maps.NMapLocationManager;
 import com.nhn.android.maps.NMapView;
+import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.NMapView.OnMapStateChangeListener;
 import com.nhn.android.maps.NMapView.OnMapViewTouchEventListener;
-import com.nhn.android.maps.maplib.NGeoPoint;
-import com.nhn.android.maps.overlay.NMapPOIdata;
-import com.nhn.android.maps.overlay.NMapPathData;
-import com.nhn.android.maps.overlay.NMapPathLineStyle;
-import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
-import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
-import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
-import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay.OnStateChangeListener;
-import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 //GPS에 필요한 라이브러리
+import com.nhn.android.maps.NMapLocationManager;
+import com.nhn.android.maps.NMapCompassManager;
+import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
+import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay.OnStateChangeListener;
+
 //지도위에 오버레이 아이템 표시를 위한 라이브러리
+import com.nhn.android.maps.overlay.NMapPOIdata;
 /*import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay.OnStateChangeListener;*/
+import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
+import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
+
 //지도 위에 경로 그리기를 위한 라이브러리
+import com.nhn.android.maps.overlay.NMapPathData;
+import com.nhn.android.maps.overlay.NMapPathLineStyle;
 /*import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;*/
+import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 
 /**
  * Created by Chaewon on 2017-05-18.
@@ -41,10 +38,9 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
  */
 
 public class mapActivity extends NMapActivity {
-    MyApplicationPermission mapPermission;
 
     private NMapView mMapView;
-    private final String CLIENT_ID = "HV8X2Nc9rkckC89MJH61";
+    private final String CLIENT_ID = "4_ohn24AJZdvOpKz2KkP";
     private LinearLayout MapContainer;
     OnMapStateChangeListener onMapStateChangeListener;
     OnMapViewTouchEventListener onMapViewTouchEventListener;
@@ -101,32 +97,6 @@ public class mapActivity extends NMapActivity {
         startMyLocation();//내 위치 찾기 함수 호출
         testOverlayMaker();
         testOverlayPath(); //경로 그리기 함수 시행
-
-        //permission code for android version 6.0
-        mapPermission = (MyApplicationPermission) getApplicationContext();
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            //조건문이 true일 경우, permission허가된 것, if문이 실행된다.
-            MyApplicationPermission.mapPermission = true;
-        }
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)) {}
-        if (!MyApplicationPermission.mapPermission) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 10);
-        }
-    }
-
-    //permission 설정
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 10 && grantResults.length > 0) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                MyApplicationPermission.mapPermission = true;
-            }
-            else {}
-            return;
-        }
     }
 
     private void testOverlayMaker() { //오버레이 아이템 추가 함수 정의
