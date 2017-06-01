@@ -93,7 +93,6 @@
                 android:layout_height="wrap_content"
 
                 android:backgroundTint="?android:attr/textColorHighlight"
-                android:background="@drawable/button_selector"
                 android:text="구토"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
@@ -102,7 +101,6 @@
                 android:id="@+id/torpor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_selector"
                 android:backgroundTint="?android:attr/textColorHighlight"
                 android:text="무기력"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button" />
