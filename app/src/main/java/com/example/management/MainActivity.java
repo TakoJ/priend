@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonRegister;
     private Button buttonLogin;
     private Button buttonLogout;
+    private Button community;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
