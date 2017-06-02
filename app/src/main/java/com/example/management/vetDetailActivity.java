@@ -1,12 +1,10 @@
 package com.example.management;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -14,38 +12,41 @@ import android.widget.LinearLayout;
  * Created by Chaewon on 2017-05-18.
  */
 
-public class vetDetailActivity extends Fragment { //fragment 써야하는 이유?
+public class vetDetailActivity extends Activity { //fragment 써야하는 이유?
     View v;
-    ImageButton VetAddrMap;
+    ImageButton VetAddrMap= (ImageButton) v.findViewById(R.id.VetAddrMap);
     LinearLayout resultView;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_vet_detail);
 
+        //get the data from the activity before
+        String VetName= getIntent().getStringExtra("VetName");
+        String VetAddress= getIntent().getStringExtra("VetAddress");
+        String VetTel= getIntent().getStringExtra("VetTel");
+
+        resultView= (LinearLayout) findViewById(R.id.vet_detail);
+        //refer the layout for this activity
+        alert(VetName, VetAddress, VetTel);
     }
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.activity_vet_detail, container, false);
 
-        //inflater 공부
+    //activity를 새로 생성하지 않고, dialog를 띄워서 detail 내용을 설명한다.
+    private void alert (String name, String addr, String tel){
+        new AlertDialog.Builder(this)
+                .setTitle(name)
+                .setMessage(addr)
+                .setMessage(tel)
+                .setCancelable(false) //버튼을 누르지 않으면 취소되지 않는 dialog
+                .setPositiveButton("확인", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which){
+                        dialog.dismiss();
+                        finish();
+                        //확인 버튼이 클릭되면 다이얼로그 종료
+                    }
+                }).show();
 
-        VetAddrMap= (ImageButton) v.findViewById(R.id.VetAddrMap);
-        resultView= (LinearLayout) v.findViewById(R.id.vet_detail);
-
-
-        VetAddrMap.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent= new Intent(getActivity(),mapActivity.class);
-                startActivity(intent);
-            }
-            //fragment 내에서는 this가 사용이 불가능하다, fragment와 activity가 겹쳐서 올라가있는 상태인데, this라고 하면 어떤 것을 가리키는지 알지 못한다.
-            //this대신 getActivity를 사용해서 현 activity를 변환해줄 수 있다.
-        });
-        return v;
-        //RETURN문 뒤에 나오는 statement들은 이미 함수가 return을 통해 결과를 반환했으므로 더이상 진행될 수 없다, unreachable
     }
 
 }
