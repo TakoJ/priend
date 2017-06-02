@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res-auto/android">
 
     <item
-        android2:icon="@drawable/home"
+        android2:icon="@mipmap/ic_home_white_24dp"
         android2:title="action_home"
         android2:id="@+id/homeButton"
         app:showAsAction="ifRoom" />
