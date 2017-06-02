@@ -99,8 +99,8 @@
                 android:id="@+id/torpor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_selector"
                 android:layout_margin="10dp"
+                android:background="@drawable/button_selector"
                 android:text="무기력"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
