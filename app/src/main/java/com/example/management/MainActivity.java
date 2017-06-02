@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonRegister;
     private Button buttonLogin;
     private Button buttonLogout;
+    private Button searching, hospital, community;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
+        searching = (Button) findViewById(R.id.searching);
+        hospital = (Button) findViewById(R.id.hospital);
+        community = (Button) findViewById(R.id.community);
 
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             //프로필버튼 눌렸을 때
@@ -96,5 +100,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searching.setOnClickListener(new View.OnClickListener(){
+            //동물 질병검색 눌렀을 때
+            @Override
+            public void onClick(View v) {
+                if (v == searching) {
+                    Intent intent = new Intent(getApplicationContext(), disease_condition.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
+        hospital.setOnClickListener(new View.OnClickListener(){
+            //동물병원 검색 눌렀을 때
+            @Override
+            public void onClick(View v) {
+                if(v==hospital){
+                    Intent intent = new Intent(getApplicationContext(), VetActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+//        community.setOnClickListener(new View.OnClickListener(){
+//            //게시판 눌렀을 때
+//            @Override
+//            public void onClick(View v) {
+//                if(v==community){
+//                    Intent intent = new Intent(getApplicationContext(),  .class);
+//                    startActivity(intent);
+//                }
+//
+//            }
+//
+//        });
     }
 }
