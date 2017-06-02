@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="45dp"
@@ -87,12 +85,12 @@
             android:layout_marginLeft="17dp">
 
 
-            <Button
+]            <Button
                 android:id="@+id/vomit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_selector"
-                android:margin="10dp"
+                android:layout_margin="10dp"
                 android:text="구토"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
@@ -102,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_selector"
-                android:margin="10dp"
+                android:layout_margin="10dp"
                 android:text="무기력"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 

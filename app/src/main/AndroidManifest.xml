@@ -21,13 +21,17 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".VetActivity"></activity>
+        <activity android:name=".VetActivity"/>
+        <activity android:name=".CommunityActivity"/>
+        <activity android:name=".NewPostActivity"/>
+        <activity android:name=".PostDetailActivity"/>
     </application>
 
 </manifest>

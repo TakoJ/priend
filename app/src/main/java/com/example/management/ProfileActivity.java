@@ -187,6 +187,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         switch(requestCode){
             case PICK_FROM_ALBUM: {
+                try{
                     Uri image = data.getData();
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image);
@@ -196,6 +197,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         e.printStackTrace();
                     }
                     break;
+                }catch(NullPointerException e){
+                    Toast.makeText(this, "사진을 선택하지 않았습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

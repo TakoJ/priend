@@ -4,11 +4,11 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -30,14 +30,14 @@ public class VetActivity extends AppCompatActivity {
         mapPermission = (MyApplicationPermission) getApplicationContext();
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            //조건문이 true일 경우, permission허가된 것, if문이 실행된다.
+            //if true, permission allowed. implement the if statement
             MyApplicationPermission.mapPermission = true;
         }
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
         }
         if (!MyApplicationPermission.mapPermission) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 10);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 10);
         }
 
         searchVetButton.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +56,8 @@ public class VetActivity extends AppCompatActivity {
             }
         });
     }
-///////////////////////////////////메인에는 검색버튼 눌렀을 때 이벤트///////////////////////////////////////////////////////
-    //////////////////////자동완성 정규식 --> 일단 이후에 생각하는 걸로/////////////////////////////
 
-
-    //permission 설정
+    //set the permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -73,3 +70,5 @@ public class VetActivity extends AppCompatActivity {
         }
     }
 }
+
+//imagebutton image drawable에 넣어서 바꿔주기 : 핸드폰에서 안보여유 ㅜㅜ -->appcompat부분
