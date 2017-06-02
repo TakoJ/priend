@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), VetActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
 //        community.setOnClickListener(new View.OnClickListener(){

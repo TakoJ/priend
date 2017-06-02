@@ -187,7 +187,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         switch(requestCode){
             case PICK_FROM_ALBUM: {
-                try {
+                try{
                     Uri image = data.getData();
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), image);
