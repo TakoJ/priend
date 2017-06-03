@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <TextView
             android:id="@+id/dn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:text="질병명"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <EditText
+        <TextView
             android:id="@+id/disease_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,9 +30,11 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/dn"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:background="@drawable/border_allborder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <EditText
+        <TextView
             android:id="@+id/def"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +48,7 @@
             android:text="정의"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <EditText
+        <TextView
             android:id="@+id/define"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,9 +58,10 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/def"
             android:ems="10"
+            android:background="@drawable/border_allborder"
             android:inputType="textMultiLine" />
 
-        <EditText
+        <TextView
             android:id="@+id/con"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,19 +75,20 @@
             android:text="증상"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <EditText
+        <TextView
             android:id="@+id/condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/con"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:background="@drawable/border_allborder"
+            android:inputType="textMultiLine" />
 
-        <EditText
+        <TextView
             android:id="@+id/treat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,19 +102,20 @@
             android:text="치료법"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <EditText
+        <TextView
             android:id="@+id/treatment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/treat"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:background="@drawable/border_allborder"
+            android:inputType="textMultiLine" />
 
-        <EditText
+        <TextView
             android:id="@+id/prevent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +129,7 @@
             android:text="예방법"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <EditText
+        <TextView
             android:id="@+id/preventing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,6 +139,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/prevent"
             android:ems="10"
+            android:background="@drawable/border_allborder"
             android:inputType="textMultiLine" />
+
     </RelativeLayout>
 </LinearLayout>
