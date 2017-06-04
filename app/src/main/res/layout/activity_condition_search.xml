@@ -33,15 +33,12 @@
         </RadioGroup>
 
 
-
         <Button
             android:id="@+id/vomit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/radioGroup"
             android:layout_margin="7dp"
-            android:layout_toEndOf="@+id/buttonGroup"
-            android:layout_toRightOf="@+id/buttonGroup"
             android:background="@drawable/button_selector"
             android:text="구토"
             android:textAppearance="@style/TextAppearance.AppCompat.Button" />
@@ -65,7 +62,6 @@
             android:layout_alignBottom="@+id/torpor"
             android:layout_alignTop="@+id/torpor"
             android:layout_marginRight="7dp"
-
             android:layout_toRightOf="@+id/torpor"
             android:background="@drawable/button_selector"
             android:text="탈모" />
@@ -75,10 +71,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/hairloss"
-            android:layout_marginRight="7dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/hairloss"
             android:background="@drawable/button_selector"
-            android:margin="10dp"
             android:text="복통" />
 
         <Button
@@ -87,9 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/vomit"
             android:layout_marginLeft="7dp"
-
             android:layout_marginRight="7dp"
-
             android:background="@drawable/button_selector"
             android:text="구역질" />
 
@@ -99,10 +94,10 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/nausea"
             android:layout_alignBottom="@+id/nausea"
+            android:layout_marginRight="7dp"
             android:layout_toEndOf="@+id/nausea"
             android:layout_toRightOf="@+id/nausea"
             android:background="@drawable/button_selector"
-            android:marginright="7dp"
             android:text="다호흡" />
 
         <Button
@@ -111,10 +106,10 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/polypnea"
             android:layout_alignBottom="@+id/polypnea"
+            android:layout_marginRight="7dp"
             android:layout_toEndOf="@+id/torpor"
             android:layout_toRightOf="@+id/torpor"
             android:background="@drawable/button_selector"
-            android:marginright="7dp"
             android:text="변비" />
 
         <Button
@@ -125,9 +120,9 @@
             android:layout_alignBottom="@+id/constipation"
             android:layout_alignEnd="@+id/stomachache"
             android:layout_alignRight="@+id/stomachache"
-            android:layout_toRightOf="@+id/hairloss"
+            android:layout_marginRight="7dp"
+            android:layout_toRightOf="@+id/constipation"
             android:background="@drawable/button_selector"
-            android:marginright="7dp"
             android:text="식욕부진" />
 
         <Button
@@ -136,10 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/nausea"
             android:layout_alignStart="@+id/nausea"
-
             android:layout_below="@+id/nausea"
             android:layout_marginTop="7dp"
-            android:align_below="@+id/nausea"
             android:background="@drawable/button_selector"
             android:text="종괴" />
 
@@ -159,8 +152,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/constipation"
-
-
             android:layout_alignStart="@+id/constipation"
             android:layout_alignTop="@+id/cough"
             android:layout_marginRight="7dp"
@@ -171,7 +162,6 @@
             android:id="@+id/nosebleed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignBaseline="@+id/fever"
             android:layout_alignBottom="@+id/fever"
             android:layout_alignEnd="@+id/inappetence"
@@ -186,7 +176,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/lump"
-
             android:layout_alignStart="@+id/lump"
             android:layout_below="@+id/lump"
             android:layout_marginTop="11dp"
@@ -198,7 +187,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/diarrhea"
-
             android:layout_alignBottom="@+id/diarrhea"
             android:layout_alignLeft="@+id/cough"
             android:layout_alignStart="@+id/cough"
@@ -210,7 +198,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/redpee"
-
             android:layout_alignBottom="@+id/redpee"
             android:layout_alignLeft="@+id/fever"
             android:layout_alignStart="@+id/fever"
@@ -222,7 +209,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/death"
-
             android:layout_alignBottom="@+id/death"
             android:layout_alignEnd="@+id/nosebleed"
             android:layout_alignRight="@+id/nosebleed"
@@ -235,9 +221,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/diarrhea"
-
             android:layout_alignStart="@+id/diarrhea"
-
             android:layout_below="@+id/diarrhea"
             android:layout_marginTop="12dp"
             android:background="@drawable/button_selector"
@@ -248,7 +232,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/shiver"
-
             android:layout_alignBottom="@+id/shiver"
             android:layout_alignLeft="@+id/redpee"
             android:layout_alignStart="@+id/redpee"
@@ -260,7 +243,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/death"
-
             android:layout_alignStart="@+id/death"
             android:layout_alignTop="@+id/infection"
             android:background="@drawable/button_selector"
@@ -271,7 +253,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/swelling"
-
             android:layout_alignBottom="@+id/swelling"
             android:layout_alignEnd="@+id/dyspnea"
             android:layout_alignLeft="@+id/dyspnea"
@@ -284,14 +265,11 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_below="@+id/infection"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:backgroundTint="?android:attr/textColorHighlightInverse"
             android:text="검색" />
-
-
 
 
     </RelativeLayout>

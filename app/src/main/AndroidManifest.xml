@@ -33,7 +33,7 @@
         <activity android:name=".disease_listActivity" />
         <activity android:name=".disease_searchActivity" />
         <activity android:name=".condition_searchActivity" />
-        <activity android:name=".desease_detail" />
+        <activity android:name=".disease_detail" />
         <activity android:name=".VetActivity" />
         <activity android:name=".vetDetailActivity" />
         <activity android:name=".VetlistActivity" />

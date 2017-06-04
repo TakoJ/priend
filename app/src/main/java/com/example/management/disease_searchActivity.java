@@ -22,7 +22,7 @@ public class disease_searchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v == search_button) {
-                    Intent intent = new Intent(getApplicationContext(), desease_detail.class);
+                    Intent intent = new Intent(getApplicationContext(), disease_listActivity.class);
                     startActivity(intent);
                 }
             }
