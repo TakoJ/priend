@@ -9,6 +9,7 @@
     <!-- 아래 두개는 앨범에서 이미지 가져오기때 활용 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera2" />
 
     <application
@@ -20,7 +21,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +29,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".VetActivity"/>
-        <activity android:name=".CommunityActivity"/>
-        <activity android:name=".NewPostActivity"/>
-        <activity android:name=".PostDetailActivity"/>
+        <activity android:name=".disease_condition" />
+        <activity android:name=".disease_listActivity" />
+        <activity android:name=".disease_searchActivity" />
+        <activity android:name=".condition_searchActivity" />
+        <activity android:name=".desease_detail" />
+        <activity android:name=".VetActivity" />
+        <activity android:name=".vetDetailActivity" />
+        <activity android:name=".VetlistActivity" />
+        <activity android:name=".CommunityActivity" />
+        <activity android:name=".NewPostActivity" />
+        <activity android:name=".PostDetailActivity" />
     </application>
 
 </manifest>

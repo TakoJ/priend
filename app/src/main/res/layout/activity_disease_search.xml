@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="psa.priend_diseasecondition.disease_searchActivity">
+    tools:context="com.example.management.disease_searchActivity">
+
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:hint="질병을 검색해보세요."
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="5dp"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/search_button"
         android:layout_width="50dp"
         android:layout_height="54dp"
-        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:srcCompat="@android:drawable/ic_search_category_default"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_alignBottom="@+id/search"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
 
-    <EditText
-        android:id="@+id/search_line"
-        android:layout_width="313dp"
-        android:layout_height="44dp"
-        android:layout_marginRight="-8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toLeftOf="@+id/search_button"
-        tools:layout_editor_absoluteY="16dp" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

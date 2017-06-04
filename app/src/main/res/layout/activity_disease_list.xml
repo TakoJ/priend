@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="psa.priend_diseasecondition.disease_listActivity">
+    tools:context="com.example.management.disease_listActivity">
 
     <ListView
         android:id="@+id/listView"

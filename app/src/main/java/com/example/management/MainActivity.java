@@ -121,17 +121,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//        community.setOnClickListener(new View.OnClickListener(){
-//            //게시판 눌렀을 때
-//            @Override
-//            public void onClick(View v) {
-//                if(v==community){
-//                    Intent intent = new Intent(getApplicationContext(),  .class);
-//                    startActivity(intent);
-//                }
-//
-//            }
-//
-//        });
+        community.setOnClickListener(new View.OnClickListener(){
+            //게시판 눌렀을 때
+            @Override
+            public void onClick(View v) {
+                if(v==community){
+                    Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+
+        });
     }
 }
