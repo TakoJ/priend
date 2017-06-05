@@ -13,7 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:hint="Title"
+        android:hint="제목은 여기..."
         android:maxLines="1" />
 
     <EditText
@@ -25,7 +25,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="5dp"
-        android:hint="Write your post..."
+        android:hint="글은 여기..."
         android:inputType="textMultiLine"
         android:maxLines="10"
         android:scrollHorizontally="false" />

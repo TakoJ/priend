@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonLogin;
     private Button buttonLogout;
     private Button searching, hospital, community;
+    private BackPressCloseHandler backPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         searching = (Button) findViewById(R.id.searching);
         hospital = (Button) findViewById(R.id.hospital);
         community = (Button) findViewById(R.id.community);
+        backPressCloseHandler = new BackPressCloseHandler(this);
+
+
 
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             //프로필버튼 눌렸을 때
@@ -133,5 +137,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+        backPressCloseHandler.onBackPressed();
     }
 }
