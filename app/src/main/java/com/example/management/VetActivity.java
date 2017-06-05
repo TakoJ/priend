@@ -27,7 +27,6 @@ public class VetActivity extends AppCompatActivity {
         mapButton = (ImageButton) findViewById(R.id.mapButton);
 
         //permission code for android version 6.0
-        mapPermission = (MyApplicationPermission) getApplicationContext();
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //if true, permission allowed. implement the if statement
