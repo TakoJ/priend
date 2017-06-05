@@ -16,7 +16,6 @@ public class VetActivity extends AppCompatActivity {
     ImageButton searchVetButton;
     ImageButton mapButton;
     private final Context context = this;
-    MyApplicationPermission mapPermission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

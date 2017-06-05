@@ -40,7 +40,7 @@ import com.nhn.android.mapviewer.overlay.NMapPathDataOverlay;
 public class mapActivity extends NMapActivity {
 
     private NMapView mMapView;
-    private final String CLIENT_ID = "4_ohn24AJZdvOpKz2KkP";
+    private final String CLIENT_ID = "HV8X2Nc9rkckC89MJH61";
     private LinearLayout MapContainer;
     OnMapStateChangeListener onMapStateChangeListener;
     OnMapViewTouchEventListener onMapViewTouchEventListener;
