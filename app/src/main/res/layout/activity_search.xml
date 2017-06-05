@@ -39,22 +39,24 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:srcCompat="@android:drawable/ic_menu_search"
         android:layout_alignTop="@+id/SearchVetName"
         android:layout_toRightOf="@+id/SearchVetName"
         android:layout_toEndOf="@+id/SearchVetName"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:id="@+id/SearchVetButton" />
+        android:id="@+id/SearchVetButton"
+        android:src="@mipmap/ic_search_black_36dp"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:srcCompat="@android:drawable/ic_menu_mapmode"
         android:layout_above="@+id/SearchVetButton"
         android:layout_alignLeft="@+id/SearchVetButton"
         android:layout_alignStart="@+id/SearchVetButton"
-        android:id="@+id/mapButton" />
+        android:id="@+id/mapButton"
+        android:src="@mipmap/ic_person_pin_circle_black_36dp"/>
 </RelativeLayout>
