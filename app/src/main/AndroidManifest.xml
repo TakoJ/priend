@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mapActivity"></activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".disease_condition" />
         <activity android:name=".disease_listActivity" />
