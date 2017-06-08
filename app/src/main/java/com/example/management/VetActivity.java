@@ -68,5 +68,3 @@ public class VetActivity extends AppCompatActivity {
         }
     }
 }
-
-//imagebutton image drawable에 넣어서 바꿔주기 : 핸드폰에서 안보여유 ㅜㅜ -->appcompat부분
