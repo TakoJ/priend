@@ -20,21 +20,21 @@ public class disease_condition extends AppCompatActivity {
         disease_name = (Button) findViewById(R.id.disease_name);
 
 
-        condition.setOnClickListener(new View.OnClickListener(){
+        disease_name.setOnClickListener(new View.OnClickListener(){
             //질병명 검색 눌렀을 때
             @Override
             public void onClick(View v) {
-                if (v == condition) {
+                if (v == disease_name) {
                     Intent intent = new Intent(getApplicationContext(), disease_searchActivity.class);
                     startActivity(intent);
                 }
             }
         });
-        disease_name.setOnClickListener(new View.OnClickListener(){
+        condition.setOnClickListener(new View.OnClickListener(){
             //증상으로 검색 눌렀을 때
             @Override
             public void onClick(View v) {
-                if (v == disease_name) {
+                if (v == condition) {
                     Intent intent = new Intent(getApplicationContext(), condition_searchActivity.class);
                     startActivity(intent);
                 }
