@@ -46,25 +46,12 @@
 
         <ImageView
             android:id="@+id/petImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_marginTop="44dp"
             app:srcCompat="@drawable/border"
             android:layout_below="@+id/linearLayout2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="21dp"
-            android:layout_marginStart="21dp" />
-
-        <TextView
-            android:id="@+id/pet_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="반려동물 사진"
-            android:layout_below="@+id/linearLayout2"
-            android:layout_alignLeft="@+id/petImage"
-            android:layout_alignStart="@+id/petImage" />
+            android:layout_centerInParent="true"/>
 
         <Button
             android:id="@+id/btn_UploadPicture"
@@ -73,29 +60,25 @@
             android:text="사진선택"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:layout_below="@+id/petImage"
-            android:layout_alignLeft="@+id/petImage"
-            android:layout_alignStart="@+id/petImage" />
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/petName"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_above="@+id/petAge"
-            android:layout_alignEnd="@+id/btn_profilefinish"
-            android:layout_alignRight="@+id/btn_profilefinish"
-            android:layout_marginEnd="18dp"
-            android:layout_marginRight="18dp"
             android:ems="10"
             android:hint="반려동물 이름"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:layout_below="@+id/radiogroup_type"
+            android:layout_centerInParent="true"/>
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/radiogroup_gender"
-            android:layout_above="@+id/petName"
-            android:layout_alignLeft="@+id/petName"
-            android:layout_alignStart="@+id/petName">
+            android:layout_below="@+id/btn_UploadPicture"
+            android:layout_centerInParent="true">
 
             <RadioButton
                 android:id="@+id/radioGender_male"
@@ -116,18 +99,17 @@
             android:layout_height="40dp"
             android:ems="10"
             android:hint="반려동물 나이"
+            android:textAlignment="center"
             android:inputType="textPersonName"
-            android:layout_above="@+id/radiogroup_size"
-            android:layout_alignLeft="@+id/petName"
-            android:layout_alignStart="@+id/petName" />
+            android:layout_below="@+id/petName"
+            android:layout_centerInParent="true"/>
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:id="@+id/radiogroup_type"
-            android:layout_below="@+id/btn_UploadPicture"
-            android:layout_alignLeft="@+id/btn_UploadPicture"
-            android:layout_alignStart="@+id/btn_UploadPicture">
+            android:layout_below="@+id/radiogroup_gender"
+            android:layout_centerInParent="true">
 
             <RadioButton
                 android:id="@+id/radio_dog"
@@ -158,10 +140,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/radiogroup_size"
-            android:layout_below="@+id/btn_UploadPicture"
-            android:layout_alignLeft="@+id/petAge"
-            android:layout_alignStart="@+id/petAge"
-            android:layout_marginTop="11dp">
+            android:layout_below="@+id/petAge"
+            android:layout_centerInParent="true">
 
             <RadioButton
                 android:id="@+id/radioSize_small"
@@ -183,34 +163,14 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginTop="25dp"
-            android:text="양육팁(size기반)"
-            android:layout_below="@+id/radiogroup_type"
-            android:layout_alignLeft="@+id/radiogroup_type"
-            android:layout_alignStart="@+id/radiogroup_type"
-            android:layout_alignRight="@+id/radiogroup_size"
-            android:layout_alignEnd="@+id/radiogroup_size" />
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_alignRight="@+id/textView4"
-            android:layout_alignEnd="@+id/textView4"
-            android:layout_marginTop="11dp" />
-
-        <TextView
             android:id="@+id/textViewUserEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_above="@+id/radiogroup_gender"
-            android:layout_alignLeft="@+id/calendarView"
-            android:layout_alignStart="@+id/calendarView" />
+            android:textAlignment="textEnd"
+            android:layout_alignBottom="@+id/btn_profilefinish"
+            android:layout_alignRight="@+id/petImage"
+            android:layout_alignEnd="@+id/petImage" />
     </RelativeLayout>
 </ScrollView>
 
