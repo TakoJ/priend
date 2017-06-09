@@ -86,7 +86,16 @@ public class VetActivity extends AppCompatActivity {
                     adapter.filter(text);
                 }
                 else{
+                    for (int i = 0; i < vetName.length; i++) {
+                        VetlistItem item = new VetlistItem(vetAddr[i], vetName[i], vetTel[i]);
+                        //bind all strings into an array
+                        arrayList.add(item);
+                    }
+
+                    //pass result to adapter class
                     final VetlistAdapter initadapter = new VetlistAdapter(getApplicationContext(), arrayList);
+
+                    //bind the adapter to the listview
                     list.setAdapter(initadapter);
                 }
             }

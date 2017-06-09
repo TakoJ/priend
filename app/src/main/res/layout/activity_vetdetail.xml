@@ -4,38 +4,44 @@
     android:layout_height="match_parent">
 
     <TextView
-    android:id="@+id/namelabel"
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:text="@string/namelabel"/>
+        android:id="@+id/namelabel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/addrlabel"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/vetname"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:textSize="24sp"
          />
 
     <TextView
         android:id="@+id/addrlabel"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="@string/addrlabel" />
+        android:text="@string/namelabel"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/vetaddr"
         android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        android:layout_height="45dp"
+        android:textSize="24sp"/>
 
     <TextView
         android:id="@+id/tellabel"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="@string/tellabel" />
+        android:text="@string/tellabel"
+        android:textSize="14sp"/>
 
     <TextView
-    android:id="@+id/vettel"
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
+        android:id="@+id/vettel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:textSize="24sp"
      />
 
     <Button
