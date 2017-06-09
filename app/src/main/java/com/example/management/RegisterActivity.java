@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private Button buttonRegister;
     private EditText editTextEmail;
-    private EditText editTextPassword;
+    private EditText editTextPassword, CheckPassword;
     private TextView textViewSignin;
     private DatabaseReference mDatabase;
     private ProgressDialog progressDialog;
@@ -51,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        CheckPassword = (EditText) findViewById(R.id.CheckPassword);
 
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
 
@@ -76,9 +77,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    private boolean checkPassword(String target, String check){
+        if(target.equals(check)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String checkpassword = CheckPassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             //email is empty
@@ -101,6 +111,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if(!isValidPassword(password)){
             //password is wrong
             Toast.makeText(this, "비밀번호는 6~20자의 영문,숫자 조합으로만 가능합니다.", Toast.LENGTH_LONG).show();
+            //stopping the function further
+            return;
+        }
+        if(!checkPassword(password, checkpassword)){
+            //확인하는 비밀번호가 같지않다면
+            Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
             //stopping the function further
             return;
         }
