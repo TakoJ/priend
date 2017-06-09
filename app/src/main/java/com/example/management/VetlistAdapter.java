@@ -77,6 +77,7 @@ public class VetlistAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(mcontext, VetInfoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("vetName", (items.get(position).getName()));
                 intent.putExtra("vetAddress", (items.get(position).getAddr()));
                 intent.putExtra("vetTel", (items.get(position).getTel()));

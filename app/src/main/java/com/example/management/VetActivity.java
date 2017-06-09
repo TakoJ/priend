@@ -66,6 +66,7 @@ public class VetActivity extends AppCompatActivity {
         //bind the adapter to the listview
         list.setAdapter(adapter);
 
+
         //Locate the edittext in listview xml
         editsearch = (EditText) findViewById(R.id.listSearch);
 
@@ -82,23 +83,17 @@ public class VetActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
-                if (text.length()>0){
-                    adapter.filter(text);
-                }
-                else{
-                    for (int i = 0; i < vetName.length; i++) {
-                        VetlistItem item = new VetlistItem(vetAddr[i], vetName[i], vetTel[i]);
-                        //bind all strings into an array
-                        arrayList.add(item);
+                    if (text.length() > 0) {
+                        adapter.filter(text);
+                    } else {
+                        for (int i = 0; i < vetName.length; i++) {
+                            VetlistItem item = new VetlistItem(vetAddr[i], vetName[i], vetTel[i]);
+                            arrayList.add(item);
+                        }
+                        final VetlistAdapter initadapter = new VetlistAdapter(getApplicationContext(), arrayList);
+                        list.setAdapter(initadapter);
                     }
-
-                    //pass result to adapter class
-                    final VetlistAdapter initadapter = new VetlistAdapter(getApplicationContext(), arrayList);
-
-                    //bind the adapter to the listview
-                    list.setAdapter(initadapter);
                 }
-            }
         });
 
         //permission code for android version 6.0
