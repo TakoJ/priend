@@ -104,12 +104,12 @@ public class mapActivity extends NMapActivity {
         //POI 아이템 관리 클래스 생성: 전체 아이템 수, NMapResourceProvider 상속 클래스
         NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(2);//POI 아이템 추가 시작: 두개를 추가할 것이다
-        poiData.addPOIitem(128.3925046, 36.1454420, "marker1", markerId, 0); //이거 좌표 금오공대, 이 좌표를 내 위치 기반 가까운 동물병원으로 바꿀 수 이써야 한다.
-        poiData.addPOIitem(128.3915046, 36.1354420, "marker2", markerId, 0);
+        poiData.addPOIitem(127.0428056, 37.5657035, "marker1", markerId, 0);
+        poiData.addPOIitem(127.0370298, 37.5596499, "marker2=", markerId, 0);
         poiData.endPOIdata();//POI 아이템 추가 종료
         //POI data overlay 객체 생성: 여러 개의 오버레이 아이템을 포함할 수 있는 오버레이 클래스
         NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-        poiDataOverlay.showAllPOIdata(0); //모든 POI 데이터를 화면에 표시한다 (괄호 안은 zoom level)
+        poiDataOverlay.showAllPOIdata(0); //모든 POI 데이터를 /화면에 표시한다 (괄호 안은 zoom level)
         poiDataOverlay.setOnStateChangeListener(onPOIdataStateChangeListener);
         //POI 아이템이 선택 상태 변경 시 호출되는 콜백 인터페이스
     }
@@ -170,8 +170,8 @@ public class mapActivity extends NMapActivity {
     private void testOverlayPath() {
         NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(2);
-        poiData.addPOIitem(127.108099, 37.366034, "begin", NMapPOIflagType.FROM, 0); //이거 좌표 금오공대, 이 좌표를 내 위치 기반 가까운 동물병원으로 바꿀 수 이써야 한다.
-        poiData.addPOIitem(127.106279, 37.366380, "end", NMapPOIflagType.TO, 0);
+        poiData.addPOIitem(127.0492429, 37.5559484, "begin", NMapPOIflagType.FROM, 0);
+        poiData.addPOIitem(127.0431163, 37.5658500, "end", NMapPOIflagType.TO, 0);
         poiData.endPOIdata();
 
         //POI 데이터 오버레이 객체 생성: 여러개의 오버레이 아이템을 포함할 수 있는 오버레이 클래스
@@ -183,18 +183,25 @@ public class mapActivity extends NMapActivity {
         pathData.initPathData(); //경로데이터 추가 시작
 
         //경로 데이터의 보간점 좌표 추가- 좌표, 선 타입 설정 (0으로 설정 시 이전 값을 그대로 사용한다)
-        pathData.addPathPoint(127.108099, 37.366034, NMapPathLineStyle.TYPE_SOLID);
-        pathData.addPathPoint(127.108088, 37.366043, 0);
-        pathData.addPathPoint(127.108079, 37.365619, 0);
-        pathData.addPathPoint(127.107458, 37.365608, 0);
-        pathData.addPathPoint(127.107232, 37.365608, 0);
-        pathData.addPathPoint(127.106904, 37.365624, 0);
-        pathData.addPathPoint(127.105933, 37.365621, NMapPathLineStyle.TYPE_DASH);
-        pathData.addPathPoint(127.105929, 37.366378, 0);
-        pathData.addPathPoint(127.106279, 37.366380, 0);
+        pathData.addPathPoint(127.0492429, 37.5559484, NMapPathLineStyle.TYPE_DASH);
+        pathData.addPathPoint(127.0467005, 37.5562914, 0);
+        pathData.addPathPoint(127.0430681, 37.5565076, NMapPathLineStyle.TYPE_SOLID);
+        pathData.addPathPoint(127.0432912, 37.5592420, 0);
+        pathData.addPathPoint(127.0432847, 37.5599002, 0);
+        pathData.addPathPoint(127.0432123, 37.5615400, 0);
+        pathData.addPathPoint(127.0423078, 37.5653466, NMapPathLineStyle.TYPE_DASH);
+        pathData.addPathPoint(127.0427542, 37.5655640, 0);
+        pathData.addPathPoint(127.0431163, 37.5658500, 0);
         pathData.endPathData();//경로 데이터 추가 종료
 
         //경로 데이터를 표시하는 오버레이 객체 생성
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
     }
 }
+
+/*
+17.06.05
+1. main에서 누를때 --> GPS
+2. detail에서 누를때 --> 경로찾기
+3. addpathpoint 경로 좌표설정
+ */

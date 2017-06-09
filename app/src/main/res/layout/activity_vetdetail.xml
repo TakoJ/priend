@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+    android:id="@+id/namelabel"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:text="@string/namelabel"/>
+
+    <TextView
+        android:id="@+id/vetname"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+         />
+
+    <TextView
+        android:id="@+id/addrlabel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/addrlabel" />
+
+    <TextView
+        android:id="@+id/vetaddr"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/tellabel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/tellabel" />
+
+    <TextView
+    android:id="@+id/vettel"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+     />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지도에서 보기" />
+</LinearLayout>

@@ -27,19 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mapActivity"></activity>
+        <activity android:name=".mapActivity"/>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".disease_condition" />
         <activity android:name=".disease_listActivity" />
         <activity android:name=".disease_searchActivity" />
         <activity android:name=".condition_searchActivity" />
         <activity android:name=".disease_detail" />
-        <activity android:name=".VetActivity" />
-        <activity android:name=".vetDetailActivity" />
-        <activity android:name=".VetlistActivity" />
         <activity android:name=".CommunityActivity" />
         <activity android:name=".NewPostActivity" />
         <activity android:name=".PostDetailActivity" />
+        <activity android:name=".VetInfoActivity"/>
+        <activity android:name=".VetActivity"/>
     </application>
 
 </manifest>

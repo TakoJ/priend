@@ -1,37 +1,52 @@
 package com.example.management;
 
+/**
+ * Created by Chaewon on 2017-06-08.
+ */
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-/**
- * Created by Chaewon on 2017-05-18.
- */
+import java.util.List;
+import java.util.Locale;
 
 public class VetlistAdapter extends BaseAdapter {
-    private LayoutInflater listInflater;
-    private ArrayList<VetlistItem> data;
-    private int layout;
 
-    public VetlistAdapter(Context context, int layout, ArrayList<VetlistItem> data){
-        this.listInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.data= data;
-        this.layout= layout;
-    } //constructer of this class
+    //declare variables
+    Context mcontext;
+    LayoutInflater inflater;
+    private List<VetlistItem> items= null;
+    private ArrayList<VetlistItem> arrayList;
+
+    public VetlistAdapter(Context context, List<VetlistItem> item){
+        mcontext= context;
+        this.items= item;
+        inflater= LayoutInflater.from(mcontext);
+        this.arrayList= new ArrayList<>();
+        this.arrayList.addAll(item);
+    }
+
+    public class ViewHolder{
+        TextView vetName;
+        TextView vetAddr;
+        TextView vetTel;
+    }
 
     @Override
     public int getCount(){
-        return data.size();
-    } //return the number of data used in Adapter
+        return items.size();
+    }
 
     @Override
-    public String getItem(int position){
-        return data.get(position).getName();
+    public VetlistItem getItem(int position){
+        return items.get(position);
     }
 
     @Override
@@ -39,27 +54,53 @@ public class VetlistAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = listInflater.inflate(layout, parent, false);
-        } //return the view usd for print out data in the exact position
+    public View getView(final int position, View view, ViewGroup parent){
+        final ViewHolder holder;
+        if (view==null){
+            holder= new ViewHolder();
+            view= inflater.inflate(R.layout.vetlist_item, null);
+            //locate textviews into vetlist_itemxml
+            holder.vetName= (TextView) view.findViewById(R.id.vetName);
+            holder.vetAddr= (TextView) view.findViewById(R.id.vetAddr);
+            holder.vetTel= (TextView) view.findViewById(R.id.vetTel);
+            view.setTag(holder);
+        }
+        else{
+            holder= (ViewHolder) view.getTag();
+        }
+        //set the results into textviews
+        holder.vetName.setText(items.get(position).getName());
+        holder.vetAddr.setText(items.get(position).getAddr());
+        holder.vetTel.setText(items.get(position).getTel());
 
-        VetlistItem listviewitem = data.get(position);
-
-        TextView name = (TextView) convertView.findViewById(R.id.VetName);
-        name.setText(listviewitem.getName());
-
-        return convertView;
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(mcontext, VetInfoActivity.class);
+                intent.putExtra("vetName", (items.get(position).getName()));
+                intent.putExtra("vetAddress", (items.get(position).getAddr()));
+                intent.putExtra("vetTel", (items.get(position).getTel()));
+                mcontext.startActivity(intent);
+            }
+        });
+        return view;
     }
-    public void addItem(String name, String addr, String tel){
-        VetlistItem item= new VetlistItem();
 
-        item.setName(name);
-        item.setAddr(addr);
-        item.setTel(tel);
+    //filter class
 
-        data.add(item);
+    public void filter(String charText){
+        charText= charText.toLowerCase(Locale.getDefault());
+        items.clear();
+        if (charText.length()==0){
+            items.addAll(arrayList);
+        }
+        else{
+            for (VetlistItem item: arrayList){
+                if (item.getAddr().toLowerCase(Locale.getDefault()).contains(charText)){
+                    items.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
-
 }

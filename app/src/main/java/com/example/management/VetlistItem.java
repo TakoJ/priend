@@ -1,42 +1,27 @@
 package com.example.management;
 
 /**
- * Created by Chaewon on 2017-05-31.
+ * Created by Chaewon on 2017-06-08.
  */
 
 public class VetlistItem {
-    private String VetName;
-    private String VetAddress;
-    private String VetTel;
+    private String vetName;
+    private String vetAddr;
+    private String vetTel;
 
-    //constructer of the VetlistItem class.
-    /*public VetlistItem(String name) {
-        super();
-        this.VetName = name;
-        }
-        */
+    public VetlistItem(String vetName, String vetAddr, String vetTel){
+        this.vetName= vetName;
+        this.vetAddr= vetAddr;
+        this.vetTel= vetTel;
+    }
 
-    public String getName() {
-        return VetName;
-    } //return the name of the veterinary
-
-    public void setName(String name) {
-        this.VetName = name;
-    }// store the name of the veterinary
+    public String getName(){
+        return this.vetName;
+    }
 
     public String getAddr(){
-        return VetAddress;
+        return this.vetAddr;
     }
 
-    public void setAddr(String addr){
-        this.VetAddress= addr;
-    }
-
-    public String getTel(){
-        return VetTel;
-    }
-
-    public void setTel(String tel){
-        this.VetTel= tel;
-    }
+    public String getTel(){return this.vetTel;}
 }

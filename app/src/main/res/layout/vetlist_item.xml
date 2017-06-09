@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/namelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addrlabel"/>
+
+    <TextView
+        android:id="@+id/vetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/namelabel" />
+
+    <TextView
+    android:id="@+id/addrlabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/namelabel"
+    android:text="@string/namelabel"
+    />
+
+    <TextView
+        android:id="@+id/vetAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vetName"
+        android:layout_toRightOf="@+id/addrlabel" />
+
+    <TextView
+        android:id="@+id/tellabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addrlabel"
+        android:text="@string/tellabel"
+        />
+    <TextView
+        android:id="@+id/vetTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vetAddr"
+        android:layout_toRightOf="@+id/tellabel" />
+
+</RelativeLayout>
