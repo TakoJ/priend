@@ -109,6 +109,7 @@ public class VetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), mapActivity.class);
+                intent.putExtra("var", 1);
                 startActivity(intent);
             }
         });

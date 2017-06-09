@@ -66,6 +66,9 @@ public class mapActivity extends NMapActivity {
         super.onCreate(savedInstanceState);
         MapContainer = (LinearLayout) findViewById(R.id.mapLayout);
 
+        Intent intent= getIntent();
+        int var= intent.getIntExtra("var", 0);
+
         mMapView = new NMapView(this);
         setContentView(mMapView);
         mMapView.setClientId(CLIENT_ID); // 클라이언트 아이디 값 설정
@@ -94,9 +97,13 @@ public class mapActivity extends NMapActivity {
         mMyLocationOverlay = new NMapMyLocationOverlay(this, mMapView, mMapLocationManager, mMapCompassManager, mMapViewerResourceProvider);
         mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
         //NMapMyLocationOverlay 객체를 생성
-        startMyLocation();//내 위치 찾기 함수 호출
         testOverlayMaker();
-        testOverlayPath(); //경로 그리기 함수 시행
+
+        //누르는 위치에 따라서 실행되는 함수가 다르다
+        if (var==1)
+            startMyLocation();//내 위치 찾기 함수 호출
+        else
+            testOverlayPath(); //경로 그리기 함수 시행
     }
 
     private void testOverlayMaker() { //오버레이 아이템 추가 함수 정의
@@ -104,8 +111,8 @@ public class mapActivity extends NMapActivity {
         //POI 아이템 관리 클래스 생성: 전체 아이템 수, NMapResourceProvider 상속 클래스
         NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(2);//POI 아이템 추가 시작: 두개를 추가할 것이다
-        poiData.addPOIitem(127.0428056, 37.5657035, "marker1", markerId, 0);
-        poiData.addPOIitem(127.0370298, 37.5596499, "marker2=", markerId, 0);
+        poiData.addPOIitem(127.0523573, 37.5737257, "아띠동물병원", markerId, 0);
+        poiData.addPOIitem(127.0527554, 37.5664534, "LC동물메디컬센터", markerId, 0);
         poiData.endPOIdata();//POI 아이템 추가 종료
         //POI data overlay 객체 생성: 여러 개의 오버레이 아이템을 포함할 수 있는 오버레이 클래스
         NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
@@ -113,7 +120,7 @@ public class mapActivity extends NMapActivity {
         poiDataOverlay.setOnStateChangeListener(onPOIdataStateChangeListener);
         //POI 아이템이 선택 상태 변경 시 호출되는 콜백 인터페이스
     }
-
+//GPS
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
         //위치 변경 콜백 인터페이스의 정의
         //아래 코드는 위치가 변경될 경우 호출된다
@@ -166,12 +173,12 @@ public class mapActivity extends NMapActivity {
             mMapView.setAutoRotateEnabled(false, false);//지도 회전기능 중지
         }
     }
-
+//경로
     private void testOverlayPath() {
         NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(2);
-        poiData.addPOIitem(127.0492429, 37.5559484, "begin", NMapPOIflagType.FROM, 0);
-        poiData.addPOIitem(127.0431163, 37.5658500, "end", NMapPOIflagType.TO, 0);
+        poiData.addPOIitem(127.0492429, 37.5559484, "출발", NMapPOIflagType.FROM, 0);
+        poiData.addPOIitem(127.0431163, 37.5658500, "도착", NMapPOIflagType.TO, 0);
         poiData.endPOIdata();
 
         //POI 데이터 오버레이 객체 생성: 여러개의 오버레이 아이템을 포함할 수 있는 오버레이 클래스
@@ -198,10 +205,3 @@ public class mapActivity extends NMapActivity {
         NMapPathDataOverlay pathDataOverlay = mOverlayManager.createPathDataOverlay(pathData);
     }
 }
-
-/*
-17.06.05
-1. main에서 누를때 --> GPS
-2. detail에서 누를때 --> 경로찾기
-3. addpathpoint 경로 좌표설정
- */

@@ -39,6 +39,7 @@ public class VetInfoActivity extends Activity{
             @Override
             public void onClick(View view){
                 Intent intent= new Intent(getApplicationContext(), mapActivity.class);
+                intent.putExtra("var", 2);
                 startActivity(intent);
             }
         });
