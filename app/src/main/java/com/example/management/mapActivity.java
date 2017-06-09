@@ -97,11 +97,13 @@ public class mapActivity extends NMapActivity {
         mMyLocationOverlay = new NMapMyLocationOverlay(this, mMapView, mMapLocationManager, mMapCompassManager, mMapViewerResourceProvider);
         mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
         //NMapMyLocationOverlay 객체를 생성
-        testOverlayMaker();
+
 
         //누르는 위치에 따라서 실행되는 함수가 다르다
-        if (var==1)
+        if (var==1){
             startMyLocation();//내 위치 찾기 함수 호출
+            testOverlayMaker();
+        }
         else
             testOverlayPath(); //경로 그리기 함수 시행
     }
