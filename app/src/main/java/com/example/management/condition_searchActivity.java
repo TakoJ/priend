@@ -2,21 +2,38 @@ package com.example.management;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class condition_searchActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private RadioButton dog;
+    private RadioButton cat;
     private Button vomit, torpor, hairloss, stomachache,nausea, polypnea, constipation, inappetence;
     private Button lump, cough, fever, nosebleed, diarrhea, redpee, death, dyspnea, shiver, infection, swelling, pain;
     private Button search;
+
+    public ArrayList<String> toserver = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_condition_search);
-
+        dog = (RadioButton) findViewById(R.id.dog);
+        cat = (RadioButton) findViewById(R.id.cat);
 
         vomit = (Button) findViewById(R.id.vomit);
         torpor = (Button) findViewById(R.id.torpor);
@@ -38,33 +55,57 @@ public class condition_searchActivity extends AppCompatActivity implements View.
         infection = (Button) findViewById(R.id.infection);
         swelling = (Button) findViewById(R.id.swelling);
         pain = (Button) findViewById(R.id.pain);
-
-
         search = (Button) findViewById(R.id.search);
 
-        vomit.setOnClickListener(this); torpor.setOnClickListener(this); hairloss.setOnClickListener(this); stomachache.setOnClickListener(this);
-        nausea.setOnClickListener(this); polypnea.setOnClickListener(this); constipation.setOnClickListener(this); inappetence.setOnClickListener(this);
-        lump.setOnClickListener(this); cough.setOnClickListener(this); fever.setOnClickListener(this); nosebleed.setOnClickListener(this);
-        diarrhea.setOnClickListener(this); redpee.setOnClickListener(this); death.setOnClickListener(this); dyspnea.setOnClickListener(this);
-        shiver.setOnClickListener(this); infection.setOnClickListener(this); swelling.setOnClickListener(this); pain.setOnClickListener(this);
+        vomit.setOnClickListener(MyListener); torpor.setOnClickListener(MyListener); hairloss.setOnClickListener(MyListener); stomachache.setOnClickListener(MyListener);
+        nausea.setOnClickListener(MyListener); polypnea.setOnClickListener(MyListener); constipation.setOnClickListener(MyListener); inappetence.setOnClickListener(MyListener);
+        lump.setOnClickListener(MyListener); cough.setOnClickListener(MyListener); fever.setOnClickListener(MyListener); nosebleed.setOnClickListener(MyListener);
+        diarrhea.setOnClickListener(MyListener); redpee.setOnClickListener(MyListener); death.setOnClickListener(MyListener); dyspnea.setOnClickListener(MyListener);
+        shiver.setOnClickListener(MyListener); infection.setOnClickListener(MyListener); swelling.setOnClickListener(MyListener); pain.setOnClickListener(MyListener);
 
         search.setOnClickListener(this);
+        dog.setOnClickListener(optionListener);
+        cat.setOnClickListener(optionListener);
     }
 
+    View.OnClickListener optionListener = new View.OnClickListener(){
+        public void onClick(View v){
+            RadioButton radio = (RadioButton)v;
+            if(dog.isChecked()){
+                String dog = radio.getText().toString();
+                toserver.add(dog);
+            }else if(cat.isChecked()){
+                String cat = radio.getText().toString();
+                toserver.add(cat);
+            }
+        }
+    };
+
+    View.OnClickListener MyListener = new View.OnClickListener(){
+        public void onClick(View v) {
+            int pos;
+            Button btn = (Button)v;
+            if (!v.isSelected()) {
+                v.setSelected(true);
+                String selected = btn.getText().toString();
+                toserver.add(selected);
+            } else {
+                v.setSelected(false);
+                String unselected = btn.getText().toString();
+                pos = toserver.indexOf(unselected);
+                toserver.remove(pos);
+            }
+        }
+    };
 
     @Override
     public void onClick(View v) {
-        if (v == search) {
-            //검색버튼 눌렀을 때
-            Intent intent = new Intent(getApplicationContext(), disease_listActivity.class);
-            startActivity(intent);
-        }else{
-            if(v.isSelected() == false){
-                v.setSelected(true);
-            }else{
-                v.setSelected(false);
-            }
-        }
-
+        if (v == search){
+        //검색버튼 눌렀을 때
+        Bundle list_bundle = new Bundle();
+        Intent intent=new Intent(getApplicationContext(),disease_listActivity.class);
+        intent.putStringArrayListExtra("selects", toserver);
+        this.startActivity(intent);
         }
     }
+}

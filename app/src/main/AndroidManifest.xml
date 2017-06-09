@@ -24,10 +24,11 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mapActivity"/>
+        <activity android:name=".mapActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".disease_condition" />
         <activity android:name=".disease_listActivity" />
@@ -37,8 +38,9 @@
         <activity android:name=".CommunityActivity" />
         <activity android:name=".NewPostActivity" />
         <activity android:name=".PostDetailActivity" />
-        <activity android:name=".VetInfoActivity"/>
-        <activity android:name=".VetActivity"/>
+        <activity android:name=".VetInfoActivity" />
+        <activity android:name=".VetActivity" />
+        <activity android:name=".NoDiseaseActivity"></activity>
     </application>
 
 </manifest>
