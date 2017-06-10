@@ -132,7 +132,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            onAuthSuccess(task.getResult().getUser());
+                            // Go to MainActivity
+                            startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(RegisterActivity.this, "Could not register, please try again.", Toast.LENGTH_SHORT).show();
                         }
@@ -141,30 +143,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         });
     }
-    private void onAuthSuccess(FirebaseUser user) {
-        String username = usernameFromEmail(user.getEmail());
-
-        // Write new user
-        writeNewUser(user.getUid(), username, user.getEmail());
-
-        // Go to MainActivity
-        startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
-        finish();
-    }
-
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
-        }
-    }
-
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
-
-        mDatabase.child("users").child(userId).setValue(user);
-    }
+//    private void onAuthSuccess(FirebaseUser user) {
+//        String username = usernameFromEmail(user.getEmail());
+//
+//        // Write new user
+//        writeNewUser(user.getUid(), username, user.getEmail());
+//
+//        // Go to MainActivity
+//        startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+//        finish();
+//    }
+//
+//    private String usernameFromEmail(String email) {
+//        if (email.contains("@")) {
+//            return email.split("@")[0];
+//        } else {
+//            return email;
+//        }
+//    }
+//
+//    private void writeNewUser(String userId, String name, String email) {
+//        User user = new User(name, email);
+//
+//        mDatabase.child("users").child(userId).setValue(user);
+//    }
 
     @Override
     public void onClick(View view) {

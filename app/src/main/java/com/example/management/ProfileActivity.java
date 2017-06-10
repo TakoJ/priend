@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private RadioButton radioSize_small, radioSize_middle, radioSize_large;
     private Button btn_profilefinish;
     private RadioGroup radiogroup_gender, radiogroup_type, radiogroup_size;
-
+    private String username;
 
     String userEmail;
     String userUid;
@@ -87,6 +87,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         SharedPreferences sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
         userUid = sharedPreferences.getString("uid",user.getUid()); //유저 uid받기
         userEmail = sharedPreferences.getString("email",user.getEmail()); //유저 email(아이디)받기
+        username = usernameFromEmail(userEmail);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
@@ -323,6 +324,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     .show();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -341,7 +343,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
-
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
+    }
     //permission 설정
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -393,9 +401,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         Log.d("url", photoUrl);
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("users");
-
                         Hashtable<String, String> profile = new Hashtable<String, String>();
+
                         profile.put("email", userEmail);
+                        profile.put("username", username);
                         profile.put("photo", photoUrl);
 
                         myRef.child(userUid).setValue(profile);
@@ -420,6 +429,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 });
             return null;
         }
+
     }
     private class DownloadImage extends AsyncTask<Void, Void, Void>{
 

@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:text="User Login"
+            android:text="로그인"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
             android:layout_margin="15dp"
             android:inputType="textEmailAddress"
-            android:hint="Enter your email"
+            android:hint="이메일을 입력하세요.."
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -36,7 +36,7 @@
         <EditText
             android:layout_margin="15dp"
             android:inputType="textPassword"
-            android:hint="Enter your password"
+            android:hint="비밀번호를 입력하세요."
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -44,13 +44,13 @@
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonSignin"
-            android:text="Sign in"
+            android:text="로그인하기"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:textAlignment="center"
-            android:text="Not have an account? Sign up here"
+            android:text="계정이 없다고요? 회원가입하기"
             android:id="@+id/textViewSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

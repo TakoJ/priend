@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.management.fragment.MyPostsFragment;
-import com.example.management.fragment.MyTopPostsFragment;
 import com.example.management.fragment.RecentPostsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,12 +31,10 @@ public class CommunityActivity extends BaseActivity{
             private final Fragment[] mFragments = new Fragment[] {
                     new RecentPostsFragment(),
                     new MyPostsFragment(),
-                    new MyTopPostsFragment(),
             };
             private final String[] mFragmentNames = new String[] {
                     getString(R.string.heading_recent),
-                    getString(R.string.heading_my_posts),
-                    getString(R.string.heading_my_top_posts)
+                    getString(R.string.heading_my_posts)
             };
             @Override
             public Fragment getItem(int position) {

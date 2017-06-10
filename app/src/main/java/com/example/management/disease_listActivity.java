@@ -34,62 +34,40 @@ public class disease_listActivity extends AppCompatActivity {
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
+
         for(final String str : getserver){
             for(int i=0; i<40; i++){
                 final String num = Integer.toString(i);
                 final DatabaseReference mDatabase = database.child("diseases").child(num);
-                mDatabase.child("animal").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                mDatabase.child("condition").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()){
-                            String animal_type = dataSnapshot.getValue().toString();
-                            if(animal_type.contains(str)){
-                                mDatabase.child("condition").addListenerForSingleValueEvent(new ValueEventListener() {
+                        if (dataSnapshot.exists()) {
+                            String disease_condition = dataSnapshot.getValue().toString();
+                            if (disease_condition.contains(str)) {
+                                mDatabase.child("diease_name").addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if(dataSnapshot.exists()){
-                                            String disease_condition = dataSnapshot.getValue().toString();
-                                            if (disease_condition.contains(str)) {
-                                                mDatabase.child("diease_name").addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                                        String name = dataSnapshot.getValue().toString();
-                                                        adapter.add(name);
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(DatabaseError databaseError) {
-                                                        Intent no = new Intent(getApplicationContext(), NoDiseaseActivity.class);
-                                                        startActivity(no);
-                                                    }
-                                                });
-                                            }else{
-                                                Intent no = new Intent(getApplicationContext(), NoDiseaseActivity.class);
-                                                startActivity(no);
-                                            }
-
-                                        }
-
+                                        String name = dataSnapshot.getValue().toString();
+                                        adapter.add(name);
                                     }
-
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
-                                        Intent no = new Intent(getApplicationContext(), NoDiseaseActivity.class);
-                                        startActivity(no);
                                     }
                                 });
                             }
-                        }
-                    }
 
+                        }
+
+                    }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         }
+    
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
