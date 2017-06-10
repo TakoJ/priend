@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:text="User Registration"
+            android:text="회원가입"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
             android:layout_margin="15dp"
             android:inputType="textEmailAddress"
-            android:hint="Enter your email"
+            android:hint="이메일 주소를 입력하세요."
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -35,14 +35,14 @@
         <EditText
             android:layout_margin="15dp"
             android:inputType="textPassword"
-            android:hint="Enter your password"
+            android:hint="패스워드를 입력하세요."
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:layout_margin="15dp"
             android:inputType="textPassword"
-            android:hint="Check your password"
+            android:hint="패스워드 확인"
             android:id="@+id/CheckPassword"
             android:layout_below="@+id/editTextPassword"
             android:layout_width="match_parent"
@@ -59,13 +59,13 @@
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonRegister"
-            android:text="Register User"
+            android:text="회원가입하기"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:textAlignment="center"
-            android:text="Already Registered? Sign in here"
+            android:text="이미 회원가입을 하셧다구요? 로그인하기"
             android:id="@+id/textViewSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
