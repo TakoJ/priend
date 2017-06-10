@@ -41,7 +41,7 @@
             android:layout_weight="0.8"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:hint="댓글을 입력하세요.."/>
+            android:hint="댓글을 입력하세요."/>
 
         <Button
             android:id="@+id/button_post_comment"

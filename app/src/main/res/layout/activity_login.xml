@@ -28,7 +28,7 @@
         <EditText
             android:layout_margin="15dp"
             android:inputType="textEmailAddress"
-            android:hint="이메일을 입력하세요.."
+            android:hint="이메일을 입력하세요."
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
