@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -106,6 +108,24 @@ public class condition_searchActivity extends AppCompatActivity implements View.
         Intent intent=new Intent(getApplicationContext(),disease_listActivity.class);
         intent.putStringArrayListExtra("selects", toserver);
         this.startActivity(intent);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.homeButton:
+                //homeButton이 눌렸을 경우 이벤트 발생
+                startActivity(new Intent(this, MainActivity.class));
+
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
     }
 }

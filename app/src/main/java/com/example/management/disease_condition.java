@@ -3,6 +3,8 @@ package com.example.management;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -40,5 +42,24 @@ public class disease_condition extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.homeButton:
+                //homeButton이 눌렸을 경우 이벤트 발생
+                startActivity(new Intent(this, MainActivity.class));
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
