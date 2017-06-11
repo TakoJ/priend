@@ -65,7 +65,7 @@
 
         <TextView
             android:textAlignment="center"
-            android:text="이미 회원가입을 하셧다고요? 로그인하기"
+            android:text="이미 회원가입을 하셨다고요? 로그인하기"
             android:id="@+id/textViewSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

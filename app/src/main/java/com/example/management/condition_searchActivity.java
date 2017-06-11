@@ -2,28 +2,18 @@ package com.example.management;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class condition_searchActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private RadioButton dog;
-    private RadioButton cat;
+//    private RadioButton dog;
+//    private RadioButton cat;
     private Button vomit, torpor, hairloss, stomachache,nausea, polypnea, constipation, inappetence;
     private Button lump, cough, fever, nosebleed, diarrhea, redpee, death, dyspnea, shiver, infection, swelling, pain;
     private Button search;
@@ -34,8 +24,6 @@ public class condition_searchActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_condition_search);
-        dog = (RadioButton) findViewById(R.id.dog);
-        cat = (RadioButton) findViewById(R.id.cat);
 
         vomit = (Button) findViewById(R.id.vomit);
         torpor = (Button) findViewById(R.id.torpor);
@@ -66,22 +54,22 @@ public class condition_searchActivity extends AppCompatActivity implements View.
         shiver.setOnClickListener(MyListener); infection.setOnClickListener(MyListener); swelling.setOnClickListener(MyListener); pain.setOnClickListener(MyListener);
 
         search.setOnClickListener(this);
-        dog.setOnClickListener(optionListener);
-        cat.setOnClickListener(optionListener);
+//        dog.setOnClickListener(optionListener);
+//        cat.setOnClickListener(optionListener);
     }
 
-    View.OnClickListener optionListener = new View.OnClickListener(){
-        public void onClick(View v){
-            RadioButton radio = (RadioButton)v;
-            if(dog.isChecked()){
-                String dog = radio.getText().toString();
-                toserver.add(dog);
-            }else if(cat.isChecked()){
-                String cat = radio.getText().toString();
-                toserver.add(cat);
-            }
-        }
-    };
+//    View.OnClickListener optionListener = new View.OnClickListener(){
+//        public void onClick(View v){
+//            RadioButton radio = (RadioButton)v;
+//            if(dog.isChecked()){
+//                String dog = radio.getText().toString();
+//                toserver.add(dog);
+//            }else if(cat.isChecked()){
+//                String cat = radio.getText().toString();
+//                toserver.add(cat);
+//            }
+//        }
+//    };
 
     View.OnClickListener MyListener = new View.OnClickListener(){
         public void onClick(View v) {

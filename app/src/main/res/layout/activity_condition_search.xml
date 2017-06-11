@@ -15,19 +15,19 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp">
 
-            <RadioButton
-                android:id="@+id/dog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="개"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/dog"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="개"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Display1" />-->
 
-            <RadioButton
-                android:id="@+id/cat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="고양이"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/cat"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="고양이"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Display1" />-->
 
 
         </RadioGroup>
