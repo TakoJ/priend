@@ -92,7 +92,7 @@ public class VetActivity extends AppCompatActivity {
                         VetlistItem item = new VetlistItem(vetAddr[i], vetName[i], vetTel[i]);
                         arrayList.add(item);
                     }
-                    final VetlistAdapter initadapter = new VetlistAdapter(getApplicationContext(), arrayList);
+                    final VetlistAdapter initadapter = new VetlistAdapter(VetActivity.this, arrayList);
                     list.setAdapter(initadapter);
                 }
             }
