@@ -111,10 +111,11 @@ public class mapActivity extends NMapActivity {
     private void testOverlayMaker() { //오버레이 아이템 추가 함수 정의
         int markerId = NMapPOIflagType.PIN; //마커 아이디 설정
         //POI 아이템 관리 클래스 생성: 전체 아이템 수, NMapResourceProvider 상속 클래스
-        NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
-        poiData.beginPOIdata(2);//POI 아이템 추가 시작: 두개를 추가할 것이다
-        poiData.addPOIitem(127.0523573, 37.5737257, "아띠동물병원", markerId, 0);
-        poiData.addPOIitem(127.0527554, 37.5664534, "LC동물메디컬센터", markerId, 0);
+        NMapPOIdata poiData = new NMapPOIdata(3, mMapViewerResourceProvider);
+        poiData.beginPOIdata(3);//POI 아이템 추가 시작: 세개를 추가할 것이다
+        poiData.addPOIitem(127.0339685, 37.5560677, "오렌지동물병원", markerId, 0);
+        poiData.addPOIitem(127.0370298, 37.5596499, "한양동물메디컬센터", markerId, 0);
+        poiData.addPOIitem(127.0428056, 37.5657035, "기린동물병원", markerId, 0);
         poiData.endPOIdata();//POI 아이템 추가 종료
         //POI data overlay 객체 생성: 여러 개의 오버레이 아이템을 포함할 수 있는 오버레이 클래스
         NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
@@ -192,13 +193,17 @@ public class mapActivity extends NMapActivity {
         pathData.initPathData(); //경로데이터 추가 시작
 
         //경로 데이터의 보간점 좌표 추가- 좌표, 선 타입 설정 (0으로 설정 시 이전 값을 그대로 사용한다)
+        //from ITBT to 기린동물병원
         pathData.addPathPoint(127.0492429, 37.5559484, NMapPathLineStyle.TYPE_DASH);
-        pathData.addPathPoint(127.0467005, 37.5562914, 0);
+        pathData.addPathPoint(127.0492429, 37.5555484, 0);
+        pathData.addPathPoint(127.0488429, 37.5549052, 0);
+        pathData.addPathPoint(127.0470199, 37.5549052, 0);
         pathData.addPathPoint(127.0430681, 37.5565076, NMapPathLineStyle.TYPE_SOLID);
-        pathData.addPathPoint(127.0432912, 37.5592420, 0);
-        pathData.addPathPoint(127.0432847, 37.5599002, 0);
-        pathData.addPathPoint(127.0432123, 37.5615400, 0);
-        pathData.addPathPoint(127.0423078, 37.5653466, NMapPathLineStyle.TYPE_DASH);
+        pathData.addPathPoint(127.0430681, 37.5569076, 0);
+        pathData.addPathPoint(127.0408010, 37.5577510, 0);
+        pathData.addPathPoint(127.0414112, 37.5620135, 0);
+        pathData.addPathPoint(127.0416603, 37.5653466, 0);
+        pathData.addPathPoint(127.0425078, 37.5653466, NMapPathLineStyle.TYPE_DASH);
         pathData.addPathPoint(127.0427542, 37.5655640, 0);
         pathData.addPathPoint(127.0431163, 37.5658500, 0);
         pathData.endPathData();//경로 데이터 추가 종료
