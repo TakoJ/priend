@@ -381,50 +381,55 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         protected Void doInBackground(Void... params) {
                 StorageReference mountainsRef = mStorageRef.child("users").child(userEmail+"jpg");
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] data = baos.toByteArray();
+                try{
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data = baos.toByteArray();
 
-                UploadTask uploadTask = mountainsRef.putBytes(data);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @SuppressWarnings("VisibleForTests")
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                        Uri downloadUrl = taskSnapshot.getDownloadUrl(); //오류 suppress함
-                        String photoUrl = String.valueOf(downloadUrl);
-                        Log.d("url", photoUrl);
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("users");
-                        Hashtable<String, String> profile = new Hashtable<String, String>();
+                    UploadTask uploadTask = mountainsRef.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @SuppressWarnings("VisibleForTests")
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl(); //오류 suppress함
+                            String photoUrl = String.valueOf(downloadUrl);
+                            Log.d("url", photoUrl);
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("users");
+                            Hashtable<String, String> profile = new Hashtable<String, String>();
 
-                        profile.put("email", userEmail);
-                        profile.put("photo", photoUrl);
+                            profile.put("email", userEmail);
+                            profile.put("photo", photoUrl);
 
-                        myRef.child(userUid).setValue(profile);
-                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                String s = dataSnapshot.getValue().toString();
-                                Log.d("Profile", s);
-                                if(dataSnapshot != null){
-                                    Toast.makeText(getApplicationContext(), "사진 업로드가 잘 됐습니다.", Toast.LENGTH_SHORT).show();
+                            myRef.child(userUid).setValue(profile);
+                            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    String s = dataSnapshot.getValue().toString();
+                                    Log.d("Profile", s);
+                                    if(dataSnapshot != null){
+                                        Toast.makeText(getApplicationContext(), "사진 업로드가 잘 됐습니다.", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
                                 }
-                            }
+                            });
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
 
-                            }
-                        });
+                }catch(NullPointerException e){
 
-                    }
-                });
+                }
             return null;
         }
 
