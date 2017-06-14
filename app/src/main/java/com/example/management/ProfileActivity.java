@@ -71,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     String userEmail;
     String userUid;
+    String username;
     String TAG = getClass().getSimpleName();
 
 
@@ -86,6 +87,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         SharedPreferences sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
         userUid = sharedPreferences.getString("uid",user.getUid()); //유저 uid받기
         userEmail = sharedPreferences.getString("email",user.getEmail()); //유저 email(아이디)받기
+        username = usernameFromEmail(user.getEmail());
+
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
@@ -405,6 +409,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                             profile.put("email", userEmail);
                             profile.put("photo", photoUrl);
+                            profile.put("username", username);
 
                             myRef.child(userUid).setValue(profile);
                             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
