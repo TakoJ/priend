@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +16,7 @@ import com.example.management.fragment.RecentPostsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class CommunityActivity extends BaseActivity{
+public class CommunityActivity extends AppCompatActivity{
     private static final String TAG = "CommunityActivity";
 
     private FragmentPagerAdapter mPagerAdapter;

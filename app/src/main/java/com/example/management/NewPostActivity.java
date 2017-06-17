@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewPostActivity extends BaseActivity {
+public class NewPostActivity extends AppCompatActivity {
 
     private static final String TAG = "NewPostActivity";
     private static final String REQUIRED = "Required";
